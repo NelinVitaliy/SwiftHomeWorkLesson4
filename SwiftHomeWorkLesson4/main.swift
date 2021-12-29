@@ -78,7 +78,7 @@ class TrunkCar:Car, CustomStringConvertible{
     var description: String{
         _ = body?.description ?? "Separated"
         
-        return "Brand:\(brand)\nYear of release:\(yearOfRealease)\n\(AutoBodyType.self) \(currently) | \(maxCargoSpace)\nStatus Car: \(EngineStatus.on) | \(WindowsStatus.closed)\n"
+        return "Brand:\(brand)\nYear of release:\(yearOfRealease)\n\(AutoBodyType.self) \(currently) | \(maxCargoSpace)\nStatus Car: \(engine) | \(windows)\n"
     }
         
     init(brand:String, yearOfRelease:Int,
@@ -122,7 +122,7 @@ class SportCar: Car, CustomStringConvertible {
     var maxSpeed:Int = 0
     
     var description: String{
-        return "Brand:\(brand)\nYear of relaese:\(yearOfRealease)\nAcceleration: \(zeroToHundred)\nMax speed: \(maxSpeed)km/h \nStatus Car: \(EngineStatus.on)| \(WindowsStatus.opened)\n"
+        return "Brand:\(brand)\nYear of relaese:\(yearOfRealease)\nAcceleration: \(zeroToHundred)\nMax speed: \(maxSpeed)km/h \nStatus Car: \(engine) | \(windows)\n"
     }
     
     init(brand:String, yearOfRealease: Int,
@@ -139,7 +139,7 @@ class SportCar: Car, CustomStringConvertible {
         case .switchWindows(let status):
             windows = status
         case .replaceTypes:
-            print("Type Replacement")
+            print("Changing tires")
         default:
             break
         }
@@ -150,7 +150,7 @@ class SportCar: Car, CustomStringConvertible {
 var volvoTruck = TrunkCar(brand: "Volvo", yearOfRelease: 2012, maxCargoSpace: 2000, body: nil)
 volvoTruck.perform(action: .additionalAutoBody(.tank))
 volvoTruck.perform(action: .cargoLoad(1500))
-volvoTruck.perform(action: .switchEngine(.off))
+volvoTruck.perform(action: .switchEngine(.on))
 volvoTruck.perform(action: .switchWindows(.opened))
 print(volvoTruck.self)
 
